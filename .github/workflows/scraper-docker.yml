@@ -7,7 +7,7 @@ env:
 on:
   push:
     branches: [ "main" ]
-    paths: ["scraper/*"]
+    paths: [".github/*", "scraper/*"]
   pull_request:
     branches: [ "main" ]
 
