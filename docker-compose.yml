@@ -9,4 +9,4 @@ services:
     volumes:
       - ./data:/data
     ports:
-      - "3000:3000"
+      - "3031:3000"
