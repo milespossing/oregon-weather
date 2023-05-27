@@ -13,7 +13,7 @@ COPY package*.json ./
 # Install the application dependencies
 RUN npm install --silent
 
-ENV WEATHER_FILE=/data/weather.json
+ENV WEATHER_FILE=/data/weather_result.json
 
 # Copy the rest of your app's source code
 COPY . ./

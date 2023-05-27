@@ -1,2 +1,4 @@
-* * * * * root /usr/src/oregon-weather >> /var/log/cron.log 2>&1
+WEATHER_FILE_IN=/data/locations.json
+WEATHER_FILE_OUT=/data/weather_result.json
+* * * * * /usr/src/oregon-weather >> /var/log/cron.log 2>&1
 # Don't remove the empty line at the end of this file. It is required to run the cron job
