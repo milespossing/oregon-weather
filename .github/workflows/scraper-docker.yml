@@ -7,8 +7,10 @@ env:
 on:
   push:
     branches: [ "main" ]
+    paths: ["scraper/*"]
   pull_request:
     branches: [ "main" ]
+
 
 jobs:
 
