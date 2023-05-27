@@ -1,5 +1,2 @@
-.env
-/node_modules
-/.next
-/.idea
+**/.idea/
 result.json
