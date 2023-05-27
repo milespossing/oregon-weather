@@ -1,0 +1,12 @@
+version: '3'
+services:
+  scraper:
+    image: ghcr.io/milespossing/oregon-weather-scraper:main
+    volumes:
+      - ./data:/data
+  ui:
+    image: ghcr.io/milespossing/oregon-weather-ui:main
+    volumes:
+      - ./data:/data
+    ports:
+      - "3000:3000"
