@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Build Scraper
 
 env:
   REGISTRY: ghcr.io
