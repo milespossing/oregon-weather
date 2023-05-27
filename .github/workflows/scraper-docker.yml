@@ -2,7 +2,7 @@ name: Docker Image CI
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: oregon-coast-weather-scraper
+  IMAGE_NAME: ${{ github.repository }}-scraper
 
 on:
   push:
