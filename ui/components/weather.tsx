@@ -24,7 +24,7 @@ const WeatherChart: React.FC<IProps> = ({ data }) => {
 
       const xAxis = d3.axisBottom(x);
       const yAxisLeft = d3.axisLeft(y1);
-      const yAxisRight = d3.axisLeft(y2).tickFormat(d => `${d}%`);
+      const yAxisRight = d3.axisRight(y2).tickFormat(d => `${d}%`);
 
       const maxMinSvg = d3.select(maxMinRef.current)
         .attr('width', width + margin.left + margin.right)
@@ -81,13 +81,7 @@ const WeatherChart: React.FC<IProps> = ({ data }) => {
 
       precipitationSvg
         .append('g')
-        .attr('class', 'x axis')
-        .attr('transform', `translate(0,${height})`)
-        .call(xAxis);
-
-      precipitationSvg
-        .append('g')
-        .attr('class', 'y axisLeft')
+        .attr('class', 'y axisRight')
         .call(yAxisRight);
 
       const cities = data.map(cityData => cityData.city.name); // Get city names

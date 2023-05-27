@@ -1,17 +1,22 @@
-import { GetServerSideProps } from 'next'
-import { WeatherReport, WeatherReportSchema } from '@/schemas/weather' // adjust the path to your schema accordingly
-import WeatherChart from '../components/weather'
-import * as fs from "fs"; // adjust the path to your component accordingly
+import {WeatherReport, WeatherReportSchema} from "@/schemas/weather";
+import {GetServerSideProps} from "next";
+import fs from "fs";
+import WeatherChart from "@/components/weather";
+import RootLayout from "@/app/layout";
 
 type WeatherPageProps = {
   weatherReport: WeatherReport
 }
 
-const WeatherPage = ({ weatherReport }: WeatherPageProps) => {
-  return <WeatherChart data={weatherReport} />
+const Home: React.FC<WeatherPageProps> = ({weatherReport}) => {
+  return (
+    <RootLayout>
+      <WeatherChart data={weatherReport} />
+    </RootLayout>
+  )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps<WeatherPageProps> = async () => {
   const data = fs.readFileSync(process.env.WEATHER_FILE!).toString();
 
   const weatherReport = WeatherReportSchema.parse(JSON.parse(data));
@@ -23,6 +28,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 }
 
-
-
-export default WeatherPage
+export default Home
