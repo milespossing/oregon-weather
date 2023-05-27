@@ -1,5 +1,9 @@
 name: Docker Image CI
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: oregon-coast-weather-scraper
+
 on:
   push:
     branches: [ "main" ]
