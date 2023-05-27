@@ -1,7 +1,5 @@
 use serde::{Deserialize, Serialize};
 
-// https://api.open-meteo.com/v1/forecast?latitude=46.19&longitude=-123.83&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&forecast_days=14&timezone=America%2FLos_Angeles
-
 #[derive(Serialize, Deserialize)]
 pub struct WeatherLocation {
     pub name: String,
@@ -65,43 +63,3 @@ pub async fn weather_at_location(
     let resp = reqwest::get(query).await?.json::<WeatherResponse>().await?;
     Ok(resp)
 }
-
-//
-// #[derive(Debug, Clone, Deserialize)]
-// pub struct WeatherCity {
-//     pub name: String,
-// }
-//
-// #[derive(Debug, Clone, Deserialize)]
-// pub struct WeatherForcastEntryTemp {
-//     pub day: String,
-//     pub night: String,
-//     pub min: String,
-//     pub max: String,
-// }
-//
-// #[derive(Debug, Clone, Deserialize)]
-// pub struct WeatherForcastEntry {
-//     pub dt: u64,
-//     pub temp: WeatherForcastEntryTemp,
-// }
-//
-// #[derive(Debug, Clone, Deserialize)]
-// pub struct Weather {
-//     // pub city: WeatherCity,
-//     pub list: Vec<WeatherForcastEntry>,
-// }
-//
-// pub async fn get_weather(
-//     city: &City,
-//     apikey: &String,
-// ) -> Result<Weather, Box<dyn std::error::Error>> {
-//     let query = format!(
-//         "https://api.openweathermap.org/data/2.5/forecast/daily?lat={}&lon={}&cnt={}&appid={}",
-//         city.lat, city.lon, 10, apikey
-//     );
-//
-//     let resp = reqwest::get(query).await?.json::<Weather>().await?;
-//
-//     Ok(resp)
-// }
