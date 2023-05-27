@@ -7,9 +7,10 @@ env:
 on:
   push:
     branches: [ "main" ]
-    paths: [".github/*", "scraper/*"]
+    paths: ["scraper/*"]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 
 jobs:
