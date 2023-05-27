@@ -25,9 +25,9 @@ impl WeatherReport {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let file_path = match env::var("WEATHER_FILE") {
-        Ok(file_path) => file_path,
-        Err(_) => {
+    let (file_path, output) = match (env::var("WEATHER_FILE_IN"), env::var("WEATHER_FILE_OUT")) {
+        (Ok(file_path), Ok(output)) => (file_path, output),
+        _ => {
             eprintln!("Please provide a file path as an environment variable");
             return Ok(());
         }
@@ -42,8 +42,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let report = WeatherReport::new(city, daily);
         reports.push(report);
     }
-    let output_file = File::create("result.json")?;
+    let output_file = File::create(output)?;
     serde_json::to_writer(output_file, &reports)?;
 
+    println!("Finished");
     Ok(())
 }
