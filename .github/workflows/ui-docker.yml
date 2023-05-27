@@ -2,7 +2,7 @@ name: Build UI
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: oregon-coast-weather-ui
+  IMAGE_NAME: ${{ github.repository }}-ui
 
 on:
   push:
